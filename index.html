@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陈思颖 · 作品集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#b7c9b0;--green-light:#d4e0cf;--green-dark:#8fa88a;--cream:#faf7f2;--text:#3a4a3f;--text-muted:#7a8a7f;--border:#d8d3c8;--glass-bg:rgba(250,247,242,.7);--glass-border:rgba(183,201,176,.3);--gap:clamp(1rem,3vw,2.5rem);--section-pad:clamp(3rem,8vh,6rem);--nav-width:200px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:2rem}
+body{font-family:'Noto Sans SC',sans-serif;background:var(--cream);color:var(--text);line-height:1.8;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--green-dark);z-index:1000;transition:width .1s linear;border-radius:0 2px 2px 0}
+#sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--nav-width);z-index:500;background:rgba(250,247,242,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-right:1px solid var(--border);padding:1.5rem 1rem;overflow-y:auto;transition:transform .3s}
+#sidebar .logo{font-family:'Noto Serif SC',serif;font-size:.75rem;color:var(--green-dark);letter-spacing:.05em;margin-bottom:2rem;line-height:1.5;cursor:default;user-select:none}
+#sidebar nav{display:flex;flex-direction:column;gap:.3rem}
+#sidebar nav a{font-size:.72rem;color:var(--text-muted);text-decoration:none;padding:.35rem .5rem;border-radius:6px;transition:all .25s;border-left:2px solid transparent}
+#sidebar nav a:hover,#sidebar nav a.active{color:var(--green-dark);background:rgba(183,201,176,.15);border-left-color:var(--green)}
+#sidebar nav a .num{font-family:'Space Mono',monospace;font-size:.6rem;opacity:.5;margin-right:.4rem}
+#wechat-float{position:fixed;top:1rem;right:1.5rem;z-index:600;cursor:pointer}
+#wechat-float .wx-icon{width:36px;height:36px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;transition:transform .3s,box-shadow .3s;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+#wechat-float .wx-icon:hover{transform:scale(1.1);box-shadow:0 4px 16px rgba(0,0,0,.15)}
+#wechat-qr{position:fixed;top:3.5rem;right:1.5rem;z-index:601;background:#fff;border-radius:12px;padding:1rem;box-shadow:0 8px 32px rgba(0,0,0,.12);opacity:0;pointer-events:none;transform:translateY(-8px);transition:all .3s}
+#wechat-qr.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+#wechat-qr .qr-placeholder{width:160px;height:160px;border-radius:8px;overflow:hidden}#wechat-qr .qr-placeholder img{width:100%;height:100%;object-fit:contain}
+#wechat-qr .qr-label{text-align:center;font-size:.65rem;color:var(--text-muted);margin-top:.5rem}
+#sidebar-toggle{display:none;position:fixed;top:1rem;left:1rem;z-index:601;width:36px;height:36px;background:var(--green);border:none;border-radius:50%;color:#fff;font-size:1.2rem;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+#main-content{margin-left:var(--nav-width);position:relative;z-index:1;transition:margin .3s}
+h1{font-family:'Noto Serif SC',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:600;line-height:1.4;letter-spacing:.02em}
+h2{font-family:'Noto Serif SC',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:500;letter-spacing:.03em}
+h3{font-size:.75rem;text-transform:uppercase;letter-spacing:.25em;color:var(--green-dark);font-weight:500}
+h4{font-family:'Noto Serif SC',serif;font-size:1.1rem;font-weight:500}
+p{color:var(--text-muted);font-size:.88rem;max-width:56ch}
+.glass{background:var(--glass-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--glass-border);border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.04)}
+.card-hover{transition:transform .35s cubic-bezier(.25,.46,.45,.94),box-shadow .35s}
+.card-hover:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 12px 36px rgba(0,0,0,.08)}
+section{padding:var(--section-pad) var(--gap)}
+.section-header{margin-bottom:2.5rem}
+.section-header h3{margin-bottom:.3rem}
+.section-header .line{width:50px;height:2px;background:var(--green);border-radius:1px;margin-top:.8rem}
+.section-divider{width:100%;height:1px;background:var(--border);margin:2rem 0;opacity:.5}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:var(--section-pad) var(--gap);position:relative}
+.hero h1{margin-bottom:1rem}
+.hero .subtitle{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin:1.5rem 0}
+.hero .subtitle span{font-size:.75rem;color:var(--green-dark);padding:.3rem 1rem;border:1px solid var(--green);border-radius:20px}
+.hero .contact-bar{display:flex;gap:1.5rem;align-items:center;margin-top:2.5rem;font-size:.8rem;color:var(--text-muted);flex-wrap:wrap;justify-content:center}
+.hero .contact-bar .btn{padding:.5rem 1.2rem;background:var(--green);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.75rem;transition:background .3s;text-decoration:none}
+.hero .contact-bar .btn:hover{background:var(--green-dark)}
+.fold-trigger{cursor:pointer;display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--green-dark);padding:.4rem 0;user-select:none;transition:color .2s}
+.fold-trigger:hover{color:var(--green-dark)}
+.fold-trigger .arrow{display:inline-block;transition:transform .3s;font-size:.6rem}
+.fold-trigger.open .arrow{transform:rotate(90deg)}
+.fold-content{max-height:0;overflow:hidden;transition:max-height .5s ease,padding .3s}
+.fold-content.open{max-height:2000px;padding-top:.8rem}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.photo-grid.col2{grid-template-columns:repeat(2,1fr)}
+.photo-item{aspect-ratio:4/3;position:relative;overflow:hidden;cursor:pointer;transition:transform .4s cubic-bezier(.25,.46,.45,.94)}
+.photo-item:hover{transform:scale(1.03);z-index:2}
+.photo-item img{width:100%;height:100%;object-fit:cover;border-radius:12px;transition:filter .5s}
+.photo-item:hover img{filter:brightness(1.06)}
+.photo-item.portrait{aspect-ratio:3/4}
+.photo-item .overlay{position:absolute;inset:0;border-radius:12px;background:linear-gradient(to top,rgba(58,74,63,.7) 0%,transparent 55%);opacity:0;transition:opacity .4s;display:flex;align-items:flex-end;padding:1rem}
+.photo-item:hover .overlay{opacity:1}
+.photo-item .overlay span{font-size:.6rem;letter-spacing:.08em;color:#fff}
+.design-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.design-card{padding:1.8rem}
+.design-card .tag{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.15em;color:var(--green-dark);margin-bottom:.6rem}
+.design-card h4{margin-bottom:.3rem}
+.design-card p{font-size:.78rem;margin-bottom:1rem}
+.design-card .preview{aspect-ratio:16/10;background:rgba(183,201,176,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.design-card .preview .mock{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--text-muted);opacity:.5}
+.ui-showcase{display:flex;flex-direction:column;gap:1.5rem;align-items:center;margin-bottom:2rem}
+.ui-phones{display:flex;gap:1rem;justify-content:center}
+.phone{width:110px;aspect-ratio:9/19;padding:1rem .4rem;transition:transform .4s}
+.phone:hover{transform:translateY(-6px)}
+.phone .notch{width:35%;height:3px;background:var(--green);border-radius:2px;margin:0 auto .5rem}
+.phone .screen{width:100%;aspect-ratio:9/16;background:rgba(183,201,176,.15);border-radius:4px;display:flex;align-items:center;justify-content:center}
+.phone .screen .mock-text{font-family:'Space Mono',monospace;font-size:.4rem;color:var(--text-muted);opacity:.4}
+.ui-info h4{margin-bottom:.6rem}
+.ui-info p{margin-bottom:1rem;max-width:600px;margin-left:auto;margin-right:auto}
+.flow-steps{display:flex;gap:.5rem;margin-top:1rem;flex-wrap:wrap}
+.flow-steps .step{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.08em;padding:.25rem .6rem;border-radius:16px;background:rgba(183,201,176,.12);color:var(--text-muted)}
+.flow-steps .step.active{background:rgba(183,201,176,.25);color:var(--green-dark)}
+.skills-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.skills-tags span{font-size:.7rem;padding:.3rem .8rem;background:rgba(183,201,176,.12);border:1px solid rgba(183,201,176,.2);border-radius:16px;color:var(--text-muted);transition:all .3s;cursor:default}
+.skills-tags span:hover{background:rgba(183,201,176,.25);border-color:var(--green);color:var(--green-dark);transform:translateY(-1px)}
+.honor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.honor-card{padding:1.5rem;text-align:center}
+.honor-card .level{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:.15em;color:var(--green-dark);margin-bottom:.5rem}
+.honor-card .items{font-size:.78rem;color:var(--text-muted);line-height:1.8}
+.intern-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.intern-card{padding:1.8rem}
+.intern-card .company{font-family:'Noto Serif SC',serif;font-size:1rem;margin-bottom:.3rem}
+.intern-card .role{font-size:.7rem;color:var(--green-dark);margin-bottom:.8rem}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.about-visual{aspect-ratio:4/3;border-radius:16px;overflow:hidden}
+.about-visual img{width:100%;height:100%;object-fit:cover}
+.info-row{display:flex;gap:1rem;margin-bottom:.6rem;font-size:.85rem}
+.info-row .label{color:var(--green-dark);min-width:5em;font-weight:500}
+.info-row .value{color:var(--text-muted)}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lightbox-content{max-width:90vw;max-height:85vh;position:relative;display:flex;flex-direction:column;align-items:center}
+.lightbox-content img{max-width:90vw;max-height:75vh;object-fit:contain;border-radius:12px}
+.lb-caption{padding:1rem 2rem;text-align:center;font-size:.65rem;letter-spacing:.1em;color:#fff}
+.lb-close{position:absolute;top:-2.5rem;right:0;font-size:1.5rem;color:#fff;cursor:pointer;background:none;border:none;transition:opacity .3s}
+.lb-close:hover{opacity:.7}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.25,.46,.45,.94)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+footer{padding:4rem var(--gap);text-align:center;border-top:1px solid var(--border)}
+footer h2{font-size:clamp(1.8rem,4vw,3rem);margin-bottom:1rem}
+footer .contact{display:flex;gap:1.5rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap;align-items:center}
+footer .contact .btn{padding:.5rem 1.2rem;background:var(--green);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:.75rem;transition:background .3s;text-decoration:none}
+footer .contact .btn:hover{background:var(--green-dark)}
+footer .copyright{margin-top:2rem;font-size:.6rem;color:var(--text-muted);opacity:.5}
+@media(max-width:900px){#sidebar{transform:translateX(-100%)}#sidebar.open{transform:translateX(0)}#sidebar-toggle{display:flex;align-items:center;justify-content:center}#main-content{margin-left:0}.photo-grid{grid-template-columns:repeat(2,1fr)}.design-grid{grid-template-columns:1fr}.ui-showcase{grid-template-columns:1fr}.honor-grid{grid-template-columns:1fr}.intern-grid{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.hero .subtitle{gap:.5rem}}
+@media(max-width:500px){.photo-grid{grid-template-columns:1fr}.ui-phones{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<button id="sidebar-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+<div id="wechat-float" onclick="document.getElementById('wechat-qr').classList.toggle('show')"><div class="wx-icon">💬</div></div>
+<div id="wechat-qr"><div class="qr-placeholder"><img src="public/photos/wechat_qr.png" alt="微信二维码"></div><div class="qr-label">CcKk-MiXi</div></div>
+<aside id="sidebar">
+<div class="logo">CsY<br>CcKk-MiXi</div>
+<nav>
+<a href="#hero" class="active"><span class="num">01</span>首页封面</a>
+<a href="#about"><span class="num">02</span>个人介绍</a>
+<a href="#photo"><span class="num">03</span>摄影作品</a>
+<a href="#design"><span class="num">04</span>平面设计</a>
+<a href="#ui"><span class="num">05</span>UI设计·拍伴APP</a>
+<a href="#media"><span class="num">06</span>新媒体运营</a>
+<a href="#honors"><span class="num">07</span>荣誉&技能</a>
+<a href="#summary"><span class="num">08</span>总结致谢</a>
+</nav>
+</aside>
+<div id="main-content">
+<header class="hero" id="hero">
+<h1 class="reveal" style="font-family:'Noto Serif SC',serif;font-weight:700;font-size:clamp(3rem,7vw,5rem);letter-spacing:.08em;background:linear-gradient(135deg,var(--green-dark),var(--green),var(--green-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">作品集</h1>
+<p class="reveal" style="font-size:1rem;color:var(--text-muted);margin-top:.5rem">陈思颖</p>
+<div class="subtitle reveal"><span>摄影创作</span><span>品牌平面</span><span>UI界面</span><span>新媒体运营</span></div>
+<div class="contact-bar reveal"><span>📞 15808061047</span><span>💬 微信 CcKk-MiXi</span><a href="public/简历.pdf" class="btn" target="_blank" download>📄 下载简历PDF</a></div>
+</header>
+<section id="about">
+<div class="section-header reveal"><h3>设计师个人介绍</h3><h2>About Me</h2><div class="line"></div></div>
+<div class="about-grid">
+<div class="reveal">
+<div class="info-row"><span class="label">身份</span><span class="value">中共党员｜数字媒体技术专科 + 网络与新媒体本科</span></div>
+<div class="info-row"><span class="label">院校</span><span class="value">重庆城市科技学院 / 重庆商务职业学院</span></div>
+<div class="info-row"><span class="label">学制</span><span class="value">2021.09 – 2026.06</span></div>
+<div class="info-row"><span class="label">GPA</span><span class="value">本科 4.75/5.0（前3%）｜专科 3.91/4.0（前3%）</span></div>
+<div class="info-row"><span class="label">意向</span><span class="value">视觉设计师 / UI设计师 / 新媒体美工</span></div>
+<div class="info-row"><span class="label">爱好</span><span class="value">摄影、后期剪辑、假发造型、动漫、音乐</span></div>
+<div class="fold-trigger" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span class="arrow">▶</span>主修专业课程</div>
+<div class="fold-content"><p style="font-size:.8rem">摄影与界面设计、数字摄影与摄像、数字图形处理、新媒体运营、影视后期合成、交互式动画、视频包装、UI界面设计、H5交互媒体、C4D三维基础</p></div>
+<p style="margin-top:1rem"><strong>四大核心能力：</strong>人像商业摄影 · 平面品牌包装设计 · 移动端APP UI设计 · 短视频内容策划运营</p>
+<p><strong>自我评价：</strong>情绪稳定抗压能力强，思维活跃逻辑清晰；创新意识突出，具备强团队协作能力；同时掌握实拍影像、平面品牌、产品UI、新媒体内容全链路落地，兼具审美创意与实战运营经验。</p>
+</div>
+<div class="about-visual glass reveal"><img src="public/photos/image22.jpeg" alt="About"></div>
+</div>
+</section>
+<div class="section-divider"></div>
+<section id="photo">
+<div class="section-header reveal"><h3>影像摄影创作项目</h3><h2>Photography</h2><div class="line"></div></div>
+<div class="reveal" style="margin-bottom:2rem"><p><strong>项目定位：</strong>底层视觉审美创作，支撑平面、UI、新媒体视觉产出，积累光影、构图、色彩把控能力。</p><p><strong>实战背景：</strong>校园电视台拍摄干事、团媒摄影部部长，累计完成百余场活动拍摄、百篇图文产出，具备商业人像、纪实活动完整实拍后期流程能力。</p></div>
+<div class="reveal" style="margin-bottom:3rem"><h4 style="margin-bottom:.5rem">创意人像摄影</h4><p style="font-size:.8rem;margin-bottom:1.5rem">二次元COS外景 · 中式古风园林 · 田园清新自然光</p>
+<div class="photo-grid"><div class="photo-item" data-src="public/photos/image1.jpeg" data-caption="蝶 · 守护 — 自然光轮廓塑造"><img src="public/photos/image1.jpeg" loading="lazy" alt=""><div class="overlay"><span>蝶 · 守护</span></div></div><div class="photo-item" data-src="public/photos/image2.jpeg" data-caption="蝶 · 凝视 — 低饱和氛围感"><img src="public/photos/image2.jpeg" loading="lazy" alt=""><div class="overlay"><span>蝶 · 凝视</span></div></div><div class="photo-item" data-src="public/photos/image3.jpeg" data-caption="蝶 · 飞离 — 动态抓拍"><img src="public/photos/image3.jpeg" loading="lazy" alt=""><div class="overlay"><span>蝶 · 飞离</span></div></div><div class="photo-item portrait" data-src="public/photos/image4.jpeg" data-caption="森林猎手 · 三联 — COS外景人像"><img src="public/photos/image4.jpeg" loading="lazy" alt=""><div class="overlay"><span>森林猎手</span></div></div><div class="photo-item portrait" data-src="public/photos/image5.jpeg" data-caption="水畔精灵 — 环境氛围人像"><img src="public/photos/image5.jpeg" loading="lazy" alt=""><div class="overlay"><span>水畔精灵</span></div></div><div class="photo-item portrait" data-src="public/photos/image6.jpeg" data-caption="孔雀之羽 — 创意妆造摄影"><img src="public/photos/image6.jpeg" loading="lazy" alt=""><div class="overlay"><span>孔雀之羽</span></div></div></div>
+<div class="photo-grid col2" style="margin-top:1rem"><div class="photo-item portrait" data-src="public/photos/image18.jpeg" data-caption="回廊 · 低眉 — 中式古风园林"><img src="public/photos/image18.jpeg" loading="lazy" alt=""><div class="overlay"><span>回廊 · 低眉</span></div></div><div class="photo-item portrait" data-src="public/photos/image19.jpeg" data-caption="园林 · 漫步 — 国风场景融合"><img src="public/photos/image19.jpeg" loading="lazy" alt=""><div class="overlay"><span>园林 · 漫步</span></div></div><div class="photo-item portrait" data-src="public/photos/image20.jpeg" data-caption="红栏 · 绿意 — 柔和暖调调色"><img src="public/photos/image20.jpeg" loading="lazy" alt=""><div class="overlay"><span>红栏 · 绿意</span></div></div><div class="photo-item" data-src="public/photos/image21.jpeg" data-caption="花田 · 回眸 — 田园清新自然光"><img src="public/photos/image21.jpeg" loading="lazy" alt=""><div class="overlay"><span>花田 · 回眸</span></div></div></div>
+<div class="photo-grid col2" style="margin-top:1rem"><div class="photo-item" data-src="public/photos/image22.jpeg" data-caption="草帽 · 阳光 — 松弛年轻化表达"><img src="public/photos/image22.jpeg" loading="lazy" alt=""><div class="overlay"><span>草帽 · 阳光</span></div></div><div class="photo-item" data-src="public/photos/image23.jpeg" data-caption="红纱 · 风起 — 高饱和环境曝光平衡"><img src="public/photos/image23.jpeg" loading="lazy" alt=""><div class="overlay"><span>红纱 · 风起</span></div></div><div class="photo-item portrait" data-src="public/photos/image24.jpeg" data-caption="山间 · 飘扬 — 动态抓拍逻辑"><img src="public/photos/image24.jpeg" loading="lazy" alt=""><div class="overlay"><span>山间 · 飘扬</span></div></div><div class="photo-item" data-src="public/photos/image25.jpeg" data-caption="伸出手 · 迫近 — COS角色张力"><img src="public/photos/image25.jpeg" loading="lazy" alt=""><div class="overlay"><span>伸出手 · 迫近</span></div></div></div>
+<div class="photo-grid col2" style="margin-top:1rem"><div class="photo-item" data-src="public/photos/image26.jpeg" data-caption="凝视 · 紫瞳 — COS角色人像"><img src="public/photos/image26.jpeg" loading="lazy" alt=""><div class="overlay"><span>凝视 · 紫瞳</span></div></div><div class="photo-item" data-src="public/photos/image27.jpeg" data-caption="蹲踞 · 蓄势 — COS动态抓拍"><img src="public/photos/image27.jpeg" loading="lazy" alt=""><div class="overlay"><span>蹲踞 · 蓄势</span></div></div></div>
+</div>
+<div class="reveal" style="margin-bottom:3rem"><h4 style="margin-bottom:.5rem">人文纪实摄影</h4><p style="font-size:.8rem;margin-bottom:1.5rem">江南水乡风光 · 古镇建筑细节 · 市井人文纪实</p>
+<div class="photo-grid"><div class="photo-item portrait" data-src="public/photos/image7.jpeg" data-caption="匠人 · 专注 — 人文纪实"><img src="public/photos/image7.jpeg" loading="lazy" alt=""><div class="overlay"><span>匠人 · 专注</span></div></div><div class="photo-item portrait" data-src="public/photos/image8.jpeg" data-caption="船夫 · 水巷 — 江南水乡"><img src="public/photos/image8.jpeg" loading="lazy" alt=""><div class="overlay"><span>船夫 · 水巷</span></div></div><div class="photo-item portrait" data-src="public/photos/image9.jpeg" data-caption="厨师 · 热灶 — 市井烟火"><img src="public/photos/image9.jpeg" loading="lazy" alt=""><div class="overlay"><span>厨师 · 热灶</span></div></div><div class="photo-item portrait" data-src="public/photos/image10.jpeg" data-caption="玩具摊 · 笑颜 — 街头纪实"><img src="public/photos/image10.jpeg" loading="lazy" alt=""><div class="overlay"><span>玩具摊 · 笑颜</span></div></div><div class="photo-item" data-src="public/photos/image11.jpeg" data-caption="屋檐层叠 — 古镇建筑"><img src="public/photos/image11.jpeg" loading="lazy" alt=""><div class="overlay"><span>屋檐层叠</span></div></div><div class="photo-item" data-src="public/photos/image12.jpeg" data-caption="茶 · 黄昏 — 建筑细节"><img src="public/photos/image12.jpeg" loading="lazy" alt=""><div class="overlay"><span>茶 · 黄昏</span></div></div><div class="photo-item" data-src="public/photos/image13.jpeg" data-caption="老饭馆 · 暖光 — 市井生活"><img src="public/photos/image13.jpeg" loading="lazy" alt=""><div class="overlay"><span>老饭馆 · 暖光</span></div></div><div class="photo-item" data-src="public/photos/image14.jpeg" data-caption="竹椅 · 旧墙 — 古镇肌理"><img src="public/photos/image14.jpeg" loading="lazy" alt=""><div class="overlay"><span>竹椅 · 旧墙</span></div></div><div class="photo-item portrait" data-src="public/photos/image15.jpeg" data-caption="塔 · 暮色 — 水乡风光"><img src="public/photos/image15.jpeg" loading="lazy" alt=""><div class="overlay"><span>塔 · 暮色</span></div></div></div>
+<div class="photo-grid col2" style="margin-top:1rem"><div class="photo-item" data-src="public/photos/image16.jpeg" data-caption="老者 · 街角 — 市井人文"><img src="public/photos/image16.jpeg" loading="lazy" alt=""><div class="overlay"><span>老者 · 街角</span></div></div><div class="photo-item" data-src="public/photos/image17.jpeg" data-caption="古镇 · 黄昏 — 水乡风光"><img src="public/photos/image17.jpeg" loading="lazy" alt=""><div class="overlay"><span>古镇 · 黄昏</span></div></div></div>
+</div>
+<div class="glass reveal" style="padding:1.5rem"><h4 style="margin-bottom:.5rem">摄影能力总结</h4><p>具备独立外景拍摄、活动纪实、全套后期调色能力；擅长国风、清新治愈画面风格，可直接服务新媒体配图、品牌宣传物料视觉输出。</p></div>
+</section>
+<div class="section-divider"></div>
+<section id="design">
+<div class="section-header reveal"><h3>商业平面视觉设计</h3><h2>Graphic Design</h2><div class="line"></div></div>
+<div class="reveal" style="margin-bottom:2rem"><p><strong>项目定位：</strong>商业落地品牌包装全案 + 公益创意海报，适配美工、品牌视觉岗位需求。</p></div>
+<div class="reveal" style="margin-bottom:3rem"><h4 style="margin-bottom:.3rem">项目一：永川秀芽绿茶品牌全案</h4><p style="font-size:.8rem;margin-bottom:.5rem">永川秀芽是针形名茶，属于绿茶类，产于重庆市永川区云雾山、阴山、巴岳山、箕山、黄瓜山五大山脉茶区。</p><p style="font-size:.8rem;margin-bottom:1.5rem"><strong>设计策略：</strong>以绿色系为主、黄绿色辅助，底图运用永川秀芽单簇叶子进行绘画设计，以茶叶和文字相结合的版式突出"秀芽"茶香，展现品牌调性。</p>
+<div class="fold-trigger" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span class="arrow">▶</span>品牌视觉规范（标准色卡 · 字体规范 · 设计理念）</div>
+<div class="fold-content"><div style="display:flex;gap:.8rem;flex-wrap:wrap;margin:.5rem 0 1rem;align-items:flex-end"><div style="text-align:center"><div style="width:50px;height:50px;background:#f3f7d6;border-radius:8px;border:1px solid #ddd"></div><span style="font-size:.55rem;color:var(--text-muted)">#f3f7d6</span></div><div style="text-align:center"><div style="width:50px;height:50px;background:#d6e4b1;border-radius:8px"></div><span style="font-size:.55rem;color:var(--text-muted)">#d6e4b1</span></div><div style="text-align:center"><div style="width:50px;height:50px;background:#c4cf8a;border-radius:8px"></div><span style="font-size:.55rem;color:var(--text-muted)">#c4cf8a</span></div><div style="text-align:center"><div style="width:50px;height:50px;background:#7e8d2e;border-radius:8px"></div><span style="font-size:.55rem;color:var(--text-muted)">#7e8d2e</span></div><div style="text-align:center"><div style="width:50px;height:50px;background:#000;border-radius:8px"></div><span style="font-size:.55rem;color:var(--text-muted)">#000</span></div></div><p style="font-size:.75rem;margin-bottom:.5rem">淡雅绿色调搭配黑色字体，符合茶叶自然属性，带来宁静舒适感。清新自然色调，现代设计手法兼具传统韵味。</p><p style="font-size:.75rem">海报主体突出茶叶形状和颜色，适当添加茶具元素体现茶文化内涵。包装设计以自然、文化和现代元素为载体，简约大气塑造品牌形象。</p></div>
+<div class="photo-grid" style="margin-top:1.5rem;margin-bottom:1.5rem"><div class="photo-item" data-src="public/photos/ui/秀芽海报1.png" data-caption="永川秀芽 · 主视觉海报"><img src="public/photos/ui/秀芽海报1.png" loading="lazy" alt="海报1"><div class="overlay"><span>主视觉海报</span></div></div><div class="photo-item" data-src="public/photos/ui/秀芽海报2.png" data-caption="永川秀芽 · 海报设计2"><img src="public/photos/ui/秀芽海报2.png" loading="lazy" alt="海报2"><div class="overlay"><span>海报设计2</span></div></div><div class="photo-item" data-src="public/photos/ui/秀芽海报3.png" data-caption="永川秀芽 · 海报设计3"><img src="public/photos/ui/秀芽海报3.png" loading="lazy" alt="海报3"><div class="overlay"><span>海报设计3</span></div></div></div>
+<div class="photo-grid col2" style="margin-bottom:1rem"><div class="photo-item" data-src="public/photos/ui/秀芽礼品盒.png" data-caption="永川秀芽 · 礼品盒包装"><img src="public/photos/ui/秀芽礼品盒.png" loading="lazy" alt="礼品盒"><div class="overlay"><span>礼品盒包装</span></div></div><div class="photo-item" data-src="public/photos/ui/秀芽包装展示.png" data-caption="永川秀芽 · 包装展示"><img src="public/photos/ui/秀芽包装展示.png" loading="lazy" alt="包装展示"><div class="overlay"><span>包装展示</span></div></div><div class="photo-item" data-src="public/photos/ui/秀芽三折页宣传图.png" data-caption="永川秀芽 · 三折页宣传手册"><img src="public/photos/ui/秀芽三折页宣传图.png" loading="lazy" alt="三折页"><div class="overlay"><span>三折页宣传手册</span></div></div></div>
+</div>
+<div class="reveal" style="margin-bottom:2rem"><h4 style="margin-bottom:.3rem;margin-top:2rem">项目二：情绪治愈公益海报系列</h4><p style="font-size:.8rem;margin-bottom:1rem">针对年轻人精神内耗主题，以肌理材质、分割版式、色彩情绪表达创意设计。统一设计语言：揉皱纸张纹理背景 + 喷涂点阵字体 + 线框涂鸦 + 条形码日期戳，三张分别用紫/绿/红三色对应不同情绪主题。</p>
+<div class="photo-grid col2" style="margin-bottom:1.5rem">
+<div class="photo-item" data-src="public/photos/neihao.jpg" data-caption="停止内耗 — 紫色系 · 内心挣扎"><img src="public/photos/neihao.jpg" loading="lazy" alt="停止内耗"><div class="overlay"><span>停止内耗 · 紫色系</span></div></div>
+<div class="photo-item" data-src="public/photos/jiaolv.jpg" data-caption="打破焦虑 — 绿色系 · 新生治愈"><img src="public/photos/jiaolv.jpg" loading="lazy" alt="打破焦虑"><div class="overlay"><span>打破焦虑 · 绿色系</span></div></div>
+<div class="photo-item" data-src="public/photos/bailan.jpg" data-caption="拒绝摆烂 — 红色系 · 警醒唤醒"><img src="public/photos/bailan.jpg" loading="lazy" alt="拒绝摆烂"><div class="overlay"><span>拒绝摆烂 · 红色系</span></div></div>
+</div>
+<div class="fold-trigger" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span class="arrow">▶</span>设计思路与文案详情</div>
+<div class="fold-content"><div class="design-grid"><div class="design-card glass"><div class="tag">POSTER 01 · 紫</div><h4>停止内耗</h4><p style="font-size:.75rem">紫色象征内省与精神复杂性。左侧密集紫色线框涂鸦表现思绪纠缠，右侧喷涂点阵"停止内耗"大字形成视觉冲击。<br><br><em>"停止内耗，自己的感受是最重要的"</em></p></div><div class="design-card glass"><div class="tag">POSTER 02 · 绿</div><h4>打破焦虑</h4><p style="font-size:.75rem">绿色象征新生、治愈与平静。绿色线框涂鸦从密集到分散，喷涂字体"焦虑"呈粒子消散效果，隐喻思维迷雾逐渐散去。<br><br><em>"打破焦虑，生活没什么大不了的"</em></p></div><div class="design-card glass"><div class="tag">POSTER 03 · 红</div><h4>拒绝摆烂</h4><p style="font-size:.75rem">赭红色象征警示与唤醒。最密集的线框涂鸦营造窒息感，巨大的喷涂"摆烂"二字形成强烈视觉冲击。<br><br><em>"拒绝摆烂，所有的惊艳都曾被平凡历练"</em></p></div></div></div>
+</div>
+<div class="glass reveal" style="padding:1.5rem"><h4 style="margin-bottom:.5rem">平面综合能力总结</h4><p>熟练完成品牌全案、系列创意海报、包装印刷落地设计，掌握C4D三维效果图、版式构图、系列化视觉统一，可独立承接企业美工宣传物料工作。</p></div>
+</section>
+<div class="section-divider"></div>
+<section id="ui">
+<div class="section-header reveal"><h3>核心UI设计项目</h3><h2>拍伴PAIBAN · 约拍APP全案</h2><div class="line"></div></div>
+<div class="reveal" style="margin-bottom:2rem"><p><strong>产品定位：</strong>一站式轻量C2C垂直约拍服务APP，链接摄影师与普通用户</p><p><strong>研究背景：</strong>① 国家数字经济政策支持平台经济与灵活就业；② 抖音/小红书等社交平台记录生活成风，带动个性化摄影服务需求爆发；③ 现有平台模式痛点：综合平台重商家，社交平台缺流程，均无法高效闭环对接摄影服务供需双方。</p><p><strong>个人设计价值：</strong>独立完成从市场调研到界面、IP、交互、多端适配全流程设计，完整互联网产品设计链路。从UI设计入手，优化信息、交互与视觉，解决摄影服务对接中的核心难题。</p></div>
+
+<div class="reveal" style="margin-bottom:3rem"><h4 style="margin-bottom:.5rem">前期市场与用户调研</h4>
+<div class="fold-trigger" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span class="arrow">▶</span>APP信息架构图</div>
+<div class="fold-content"><p style="font-size:.8rem">启动引导 → 登录注册 → 首页发现（摄影师推荐/作品瀑布流）→ 摄影师详情页 → 约拍下单（需求模板：效果图/时间/地点一键提交）→ 在线沟通 → 作品交付 → 评价体系。双角色架构：摄影师端（接单管理/作品集/信誉分/收益数据）+ 用户端（浏览/下单/收藏/互动）。</p></div>
+
+<div class="fold-trigger" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span class="arrow">▶</span>竞品分析（垂直类 vs 综合类平台）</div>
+<div class="fold-content"><p style="font-size:.8rem"><strong>垂直类服务平台：</strong>现有约拍类APP功能单一、用户基数小、匹配效率低，缺乏交易担保机制。<br><strong>综合类平台：</strong>小红书 — 种草社区流量大但非垂直约拍，缺乏标准化服务流程；微博超话 — 信息杂乱、匹配效率极低、无交易闭环。<br><strong>拍伴差异化优势：</strong>专注C2C约拍垂直场景，标准化需求模板 + 信誉体系 + 交易担保，提供一站式闭环服务。</p></div>
+
+<div class="fold-trigger" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span class="arrow">▶</span>五类目标用户画像</div>
+<div class="fold-content"><p style="font-size:.8rem">① <strong>全职摄影师</strong> — 需要稳定接单渠道，关注收益管理与客户评价；② <strong>摄影爱好者</strong> — 希望积累作品和额外收入，关注社区互动与曝光；③ <strong>大学生</strong> — 毕业照/情侣照/闺蜜照需求高频，价格敏感但追求品质；④ <strong>职场白领</strong> — 形象照/社交需求，注重摄影师专业度和服务效率；⑤ <strong>亲子家庭</strong> — 儿童写真/全家福需求，关注摄影师亲和力与安全性。</p></div>
+</div>
+
+<div class="reveal" style="margin-bottom:3rem"><h4 style="margin-bottom:.5rem">APP品牌视觉规范 + IP形象「派小π」</h4><p style="font-size:.8rem;margin-bottom:1rem">清新浅绿极简轻量化，适配Z世代年轻化审美。品牌IP贯穿登录流程，强化产品辨识度。</p>
+<div class="photo-grid" style="margin-bottom:1.5rem"><div class="photo-item" data-src="public/photos/ui/色彩规范.jpg" data-caption="拍伴 · 色彩规范"><img src="public/photos/ui/色彩规范.jpg" loading="lazy" alt="色彩规范"><div class="overlay"><span>色彩规范</span></div></div><div class="photo-item" data-src="public/photos/ui/字体规范.jpg" data-caption="拍伴 · 字体规范"><img src="public/photos/ui/字体规范.jpg" loading="lazy" alt="字体规范"><div class="overlay"><span>字体规范</span></div></div><div class="photo-item" data-src="public/photos/ui/图标规范.jpg" data-caption="拍伴 · 图标规范"><img src="public/photos/ui/图标规范.jpg" loading="lazy" alt="图标规范"><div class="overlay"><span>图标规范</span></div></div></div>
+<div class="design-grid">
+<div class="design-card glass card-hover"><div class="tag">BRAND IP · 派小π</div><h4>你的专属约拍搭子</h4><p style="font-size:.75rem">姓名：派小π（小π）<br>星座：双鱼座 · 生日：2月26日<br>MBTI：ENFP（快乐小狗）<br>性格：温柔细腻，活泼开朗，热衷分享<br>爱好：用镜头定格所有美好！<br><br>一只自带绿色Buff的猫咪，陪你拍遍每一份心动💚</p><div class="preview" style="overflow:hidden" data-src="public/photos/ui/IP展板.jpg" data-caption="拍伴 · IP形象「派小π」展板"><img src="public/photos/ui/IP展板.jpg" style="width:100%;height:100%;object-fit:cover" alt="IP展板"></div></div>
+</div>
+</div>
+
+<div class="reveal" style="margin-bottom:3rem"><h4 style="margin-bottom:.5rem">移动端核心界面设计</h4>
+
+<div class="ui-showcase"><div class="ui-phones"><div class="phone glass" data-src="public/photos/ui/欢迎页1.jpg" data-caption="拍伴 · 欢迎页1" style="overflow:hidden;padding:0;width:140px"><img src="public/photos/ui/欢迎页1.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:20px" alt="欢迎页1"></div><div class="phone glass" data-src="public/photos/ui/欢迎页2.jpg" data-caption="拍伴 · 欢迎页2" style="overflow:hidden;padding:0;width:140px"><img src="public/photos/ui/欢迎页2.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:20px" alt="欢迎页2"></div><div class="phone glass" data-src="public/photos/ui/欢迎页3.jpg" data-caption="拍伴 · 欢迎页3" style="overflow:hidden;padding:0;width:140px"><img src="public/photos/ui/欢迎页3.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:20px" alt="欢迎页3"></div></div><div class="ui-info"><p style="font-size:.8rem"><strong>启动引导页：</strong>从激发创作灵感 → 提供摄影学习工具 → 连接约拍服务、实现创作变现。清新柔和的渐变视觉，契合产品年轻化、轻松友好的调性。</p></div></div>
+
+<div class="ui-showcase" style="margin-top:2rem"><div class="ui-phones"><div class="phone glass" data-src="public/photos/ui/登录页1.jpg" data-caption="拍伴 · 登录页1" style="overflow:hidden;padding:0;width:140px"><img src="public/photos/ui/登录页1.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:20px" alt="登录页1"></div><div class="phone glass" data-src="public/photos/ui/登录页2.jpg" data-caption="拍伴 · 登录页2" style="overflow:hidden;padding:0;width:140px"><img src="public/photos/ui/登录页2.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:20px" alt="登录页2"></div><div class="phone glass" data-src="public/photos/ui/登录页3.jpg" data-caption="拍伴 · 登录页3" style="overflow:hidden;padding:0;width:140px"><img src="public/photos/ui/登录页3.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:20px" alt="登录页3"></div></div><div class="ui-info"><p style="font-size:.8rem"><strong>登录注册：</strong>品牌IP贯穿登录流程，强化产品辨识度。多路径登录设计：一键登录 + 手机验证 + 第三方登录，延续清新柔和视觉风格，降低用户注册心理门槛。</p></div></div>
+
+<div class="ui-showcase" style="margin-top:2rem"><div class="ui-phones"><div class="phone glass" data-src="public/photos/ui/动态界面.jpg" data-caption="拍伴 · 动态界面" style="overflow:hidden;padding:0;width:140px"><img src="public/photos/ui/动态界面.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:20px" alt="动态界面"></div><div class="phone glass" data-src="public/photos/ui/详情界面.jpg" data-caption="拍伴 · 详情界面" style="overflow:hidden;padding:0;width:140px"><img src="public/photos/ui/详情界面.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:20px" alt="详情界面"></div><div class="phone glass" data-src="public/photos/ui/消息.jpg" data-caption="拍伴 · 消息" style="overflow:hidden;padding:0;width:140px"><img src="public/photos/ui/消息.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:20px" alt="消息"></div></div><div class="ui-info"><p style="font-size:.8rem"><strong>社区动态与互动：</strong>内容种草阵地，以摄影笔记、技巧分享为核心，打造用户创作与灵感交流社区。轻量化互动设计：点赞/评论/转发+关注功能，消息闭环实时反馈。</p></div></div>
+
+<div class="ui-showcase" style="margin-top:2rem"><div class="ui-phones"><div class="phone glass" data-src="public/photos/ui/我要接单.jpg" data-caption="拍伴 · 我要接单" style="overflow:hidden;padding:0;width:140px"><img src="public/photos/ui/我要接单.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:20px" alt="我要接单"></div><div class="phone glass" data-src="public/photos/ui/接单界面.jpg" data-caption="拍伴 · 接单界面" style="overflow:hidden;padding:0;width:140px"><img src="public/photos/ui/接单界面.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:20px" alt="接单界面"></div><div class="phone glass" data-src="public/photos/ui/我要约拍.jpg" data-caption="拍伴 · 我要约拍" style="overflow:hidden;padding:0;width:140px"><img src="public/photos/ui/我要约拍.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:20px" alt="我要约拍"></div></div><div class="ui-info"><p style="font-size:.8rem"><strong>接单供需特色设计：</strong>双角色适配，同时覆盖摄影师接单管理与用户约拍需求发布场景。摄影师侧：可视化信誉分、订单与收益数据，高效管控接单流程。用户侧：标准化约拍需求模板，支持效果图、时间、地点等信息一键提交。</p></div></div>
+</div>
+
+<div class="reveal" style="margin-bottom:2rem"><h4 style="margin-bottom:.5rem">多端适配 + IP衍生设计</h4><div class="design-grid"><div class="design-card glass card-hover"><div class="tag">WEB END</div><h4>网页端后台设计</h4><p style="font-size:.78rem">配套网页端后台，统一移动端视觉规范，体现多端适配能力。手机端 + 网页端完整展示。</p></div><div class="design-card glass card-hover"><div class="tag">IP DERIVATIVES</div><h4>IP周边衍生品</h4><p style="font-size:.78rem">派小π三视图（主视图/侧视图/背视图）+ 周边衍生品 + APP宣传海报 + 活动系列海报</p></div></div></div>
+
+<div class="glass reveal" style="padding:1.5rem"><h4 style="margin-bottom:.5rem">UI项目完整总结（面试导向）</h4><p>全流程设计能力复盘：研究阶段（背景调研/实践意义）→ 前期调研（架构图/竞品分析/用户画像/TAP设计）→ 设计展示（引导页/登录注册/社区动态/接单供需/特色功能/手机端+网页端/IP设计/衍生海报/交互展示）。掌握轻量化生活服务类APP完整UI设计，具备用户思维、商业落地思维，可独立完成互联网视觉相关工作。</p></div>
+</section>
+<div class="section-divider"></div>
+<section id="media">
+<div class="section-header reveal"><h3>新媒体运营实战</h3><h2>New Media Operations</h2><div class="line"></div></div>
+<div class="intern-grid reveal">
+<div class="intern-card glass card-hover"><div class="company">绍兴越华裕智能装备有限公司</div><div class="role">短视频编导（运营方向）</div><p style="font-size:.78rem">抖音/公众号/小程序多平台账号搭建运营、全流程短视频策划拍摄剪辑、产品图文文案撰写、后台数据复盘分析</p></div>
+<div class="intern-card glass card-hover"><div class="company">重庆广播电视集团</div><div class="role">运营助理</div><p style="font-size:.78rem">访谈沟通整理、短视频文案撰稿、外景拍摄后期剪辑、公众号内容排版发布</p></div>
+</div>
+<div class="reveal" style="margin-top:2rem"><h4 style="margin-bottom:.5rem">校园实战经历</h4>
+<div class="design-grid" style="margin-top:1rem"><div class="design-card glass card-hover"><div class="tag">CAMPUS</div><h4>党委宣传中心电视台</h4><p style="font-size:.78rem">校园活动拍摄剪辑、官方新媒体内容产出</p></div><div class="design-card glass card-hover"><div class="tag">LEADERSHIP</div><h4>团媒摄影部部长</h4><p style="font-size:.78rem">统筹百余场活动拍摄、团队人员分配、日常图文更新</p></div></div>
+<p style="margin-top:1rem;font-size:.8rem"><strong>班级团务宣传：</strong>团日活动策划、资料整理申报</p></div>
+<div class="glass reveal" style="padding:1.5rem;margin-top:2rem"><h4 style="margin-bottom:.5rem">板块总结</h4><p>兼具视觉设计内容产出 + 新媒体账号运营双重能力，可兼顾设计 + 内容落地工作。</p></div>
+</section>
+<div class="section-divider"></div>
+<section id="honors">
+<div class="section-header reveal"><h3>荣誉奖项 & 专业技能</h3><h2>Honors & Skills</h2><div class="line"></div></div>
+<div class="honor-grid reveal" style="margin-bottom:3rem">
+<div class="honor-card glass"><div class="level">🏆 国家级</div><div class="items">国家奖学金<br>国家励志奖学金</div></div>
+<div class="honor-card glass"><div class="level">🏅 市级</div><div class="items">重庆市优秀毕业生<br>市商务委优秀共青团干部</div></div>
+<div class="honor-card glass"><div class="level">🎖️ 赛事奖项</div><div class="items">互联网+ 创新创业大赛<br>大学生广告艺术大赛<br>一二三等奖 · 优秀奖</div></div>
+</div>
+<div class="reveal" style="margin-bottom:2rem"><h4 style="margin-bottom:.8rem">软件技能</h4><div class="skills-tags"><span>PS</span><span>AI</span><span>PR</span><span>AE</span><span>剪映</span><span>C4D</span><span>3DMAX</span><span>DW</span><span>Figma</span></div></div>
+<div class="reveal"><h4 style="margin-bottom:.8rem">擅长方向</h4><div class="skills-tags"><span>人像摄影</span><span>视频剪辑</span><span>AI图片生成</span><span>品牌海报</span><span>礼盒包装</span><span>文创设计</span><span>新媒体美工</span></div></div>
+</section>
+<div class="section-divider"></div>
+<section id="summary">
+<div class="section-header reveal"><h3>综合总结 & 求职致谢</h3><h2>Summary</h2><div class="line"></div></div>
+<div class="reveal" style="margin-bottom:2rem"><h4 style="margin-bottom:1rem">全板块综合能力闭环</h4>
+<div class="design-grid"><div class="design-card glass"><div class="tag">01</div><h4>摄影</h4><p style="font-size:.78rem">夯实色彩构图审美，支撑平面/UI/新媒体视觉产出</p></div><div class="design-card glass"><div class="tag">02</div><h4>平面</h4><p style="font-size:.78rem">掌握商业品牌印刷落地，独立完成全案包装设计</p></div><div class="design-card glass"><div class="tag">03</div><h4>UI</h4><p style="font-size:.78rem">具备完整互联网产品设计思维，从调研到交互落地</p></div><div class="design-card glass"><div class="tag">04</div><h4>新媒体</h4><p style="font-size:.78rem">拥有内容运营实战经验，兼顾设计与内容产出</p></div></div>
+</div>
+<div class="glass reveal" style="padding:2rem;text-align:center">
+<p style="font-size:.9rem;max-width:40ch;margin:0 auto 1.5rem"><strong>求职意向：</strong>期望任职UI设计师、视觉设计师、新媒体美工相关岗位</p>
+<p style="font-size:.8rem;max-width:48ch;margin:0 auto">全部作品为本人独立原创，期待进一步沟通展示个人设计能力</p>
+</div>
+</section>
+<footer id="contact">
+<h2 class="reveal">感谢观看<br>期待合作</h2>
+<div class="contact reveal"><span>📞 15808061047</span><span>💬 微信 CcKk-MiXi</span><a href="public/简历.pdf" class="btn" target="_blank" download>📄 下载简历PDF</a></div>
+<p class="copyright">© 2026 陈思颖 · 全部作品独立原创 · ALL RIGHTS RESERVED</p>
+</footer>
+</div>
+<div class="lightbox" id="lightbox"><div class="lightbox-content"><button class="lb-close" id="lbClose">✕</button><img id="lbImg" src="" alt=""><div class="lb-caption" id="lbCaption"></div></div></div>
+<script>
+// Progress bar
+window.addEventListener('scroll',()=>{
+const h=document.documentElement;
+const st=h.scrollTop,sh=h.scrollHeight-h.clientHeight;
+document.getElementById('progress-bar').style.width=(st/sh*100)+'%';
+});
+
+// Scroll reveal
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Sidebar active state
+const sections=document.querySelectorAll('section,header');
+const navLinks=document.querySelectorAll('#sidebar nav a');
+window.addEventListener('scroll',()=>{
+let current='';
+sections.forEach(s=>{if(window.scrollY>=s.offsetTop-200)current=s.getAttribute('id');});
+navLinks.forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+current)a.classList.add('active');});
+});
+
+// Lightbox
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCaption');
+function openLB(src,caption){lbImg.src=src;lbCap.textContent=caption||'';lb.classList.add('open');document.body.style.overflow='hidden';}
+function closeLB(){lb.classList.remove('open');document.body.style.overflow='';}
+// Support .photo-item clicks
+document.addEventListener('click',e=>{const pi=e.target.closest('.photo-item');if(pi&&pi.dataset.src){e.stopPropagation();openLB(pi.dataset.src,pi.dataset.caption);}});
+// Support .design-card .preview clicks (IP展板 etc)
+document.addEventListener('click',e=>{const pv=e.target.closest('.design-card .preview');if(pv&&pv.dataset.src){e.stopPropagation();openLB(pv.dataset.src,pv.dataset.caption);}});
+// Support .phone clicks (UI screenshots)
+document.addEventListener('click',e=>{const ph=e.target.closest('.phone[data-src]');if(ph&&ph.dataset.src){e.stopPropagation();openLB(ph.dataset.src,ph.dataset.caption);}});
+document.getElementById('lbClose').addEventListener('click',e=>{e.stopPropagation();closeLB();});
+lb.addEventListener('click',e=>{if(e.target===lb)closeLB();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
+
+// Smooth scroll for sidebar nav
+document.querySelectorAll('#sidebar nav a').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});if(window.innerWidth<=900)document.getElementById('sidebar').classList.remove('open');});});
+
+// Close QR on outside click
+document.addEventListener('click',e=>{const qr=document.getElementById('wechat-qr');const fl=document.getElementById('wechat-float');if(!qr.contains(e.target)&&!fl.contains(e.target))qr.classList.remove('show');});
+
+// Typewriter for hero
+(function(){const h1=document.querySelector('.hero h1');if(!h1)return;const text=h1.textContent;h1.textContent='';let i=0;function type(){if(i<text.length){h1.textContent+=text.charAt(i);i++;setTimeout(type,80);}}setTimeout(type,400);})();
+</script>
+</body>
+</html>
